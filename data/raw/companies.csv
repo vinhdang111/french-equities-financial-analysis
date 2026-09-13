@@ -1,0 +1,52 @@
+ticker,company_name,sector,industry,country,currency,market_cap
+AC.PA,Accor,Consumer Cyclical,Lodging,France,EUR,10566169600.0
+AI.PA,Air Liquide,Basic Materials,Specialty Chemicals,France,EUR,106267066368.0
+AIR.PA,Airbus,Industrials,Aerospace & Defense,Netherlands,EUR,157821206528.0
+ALO.PA,Alstom,Industrials,Railroads,France,EUR,
+MT.AS,ArcelorMittal,Basic Materials,Steel,Luxembourg,EUR,48427139072.0
+CS.PA,AXA,Financial Services,Insurance - Diversified,France,EUR,90306043904.0
+BNP.PA,BNP Paribas,Financial Services,Banks - Regional,France,EUR,113720958976.0
+EN.PA,Bouygues,Industrials,Engineering & Construction,France,EUR,16958302208.0
+CAP.PA,Capgemini,Technology,Information Technology Services,France,EUR,17081627648.0
+CA.PA,Carrefour,Consumer Defensive,Grocery Stores,France,EUR,11512867840.0
+ACA.PA,Credit Agricole,Financial Services,Banks - Regional,France,EUR,56586301440.0
+BN.PA,Danone,Consumer Defensive,Packaged Foods,France,EUR,39534518272.0
+DSY.PA,Dassault Systemes,Technology,Software - Application,France,EUR,26596452352.0
+EDEN.PA,Edenred,Financial Services,Credit Services,France,EUR,6414590464.0
+ENGI.PA,Engie,Utilities,Utilities - Diversified,France,EUR,60923777024.0
+EL.PA,EssilorLuxottica,Healthcare,Medical Instruments & Supplies,France,EUR,67157864448.0
+ERF.PA,Eurofins Scientific,Healthcare,Diagnostics & Research,Luxembourg,EUR,12171947008.0
+RMS.PA,Hermes,Consumer Cyclical,Luxury Goods,France,EUR,146585993216.0
+KER.PA,Kering,Consumer Cyclical,Luxury Goods,France,EUR,29256738816.0
+OR.PA,L'Oreal,Consumer Defensive,Household & Personal Products,France,EUR,202327031808.0
+LR.PA,Legrand,Industrials,Electrical Equipment & Parts,France,EUR,37180817408.0
+MC.PA,LVMH,Consumer Cyclical,Luxury Goods,France,EUR,204728451072.0
+ML.PA,Michelin,,,,EUR,0.0
+ORA.PA,Orange,Communication Services,Telecom Services,France,EUR,41315102720.0
+RI.PA,Pernod Ricard,Consumer Defensive,Beverages - Wineries & Distilleries,France,EUR,14962761728.0
+PUB.PA,Publicis,Communication Services,Advertising Agencies,France,EUR,
+RNO.PA,Renault,Consumer Cyclical,Auto Manufacturers,France,EUR,8559665152.0
+SAF.PA,Safran,Industrials,Aerospace & Defense,France,EUR,136827142144.0
+SGO.PA,Saint-Gobain,Industrials,Building Products & Equipment,France,EUR,34978549760.0
+SAN.PA,Sanofi,Healthcare,Drug Manufacturers - General,France,EUR,87770521600.0
+SU.PA,Schneider Electric,Industrials,Specialty Industrial Machinery,France,EUR,163992764416.0
+GLE.PA,Societe Generale,Financial Services,Banks - Regional,France,EUR,54586429440.0
+STLAP.PA,Stellantis,Consumer Cyclical,Auto Manufacturers,Netherlands,EUR,17623541760.0
+STMPA.PA,STMicroelectronics,Technology,Semiconductors,Netherlands,EUR,39846887424.0
+TEP.PA,Teleperformance,Industrials,Specialty Business Services,France,EUR,4123865856.0
+HO.PA,Thales,Industrials,Aerospace & Defense,France,EUR,46656925696.0
+TTE.PA,TotalEnergies,Energy,Oil & Gas Integrated,France,EUR,174069235712.0
+URW.AS,Unibail-Rodamco-Westfield,,,,,
+VIE.PA,Veolia,Industrials,Waste Management,France,EUR,23016085504.0
+DG.PA,Vinci,Industrials,Engineering & Construction,France,EUR,61621956608.0
+VIV.PA,Vivendi,Communication Services,Electronic Gaming & Multimedia,France,EUR,1523844608.0
+WLN.PA,Worldline,Technology,Software - Infrastructure,France,EUR,759797248.0
+ATO.PA,Atos,Technology,Information Technology Services,France,EUR,490199264.0
+BVI.PA,Bureau Veritas,Industrials,Consulting Services,France,EUR,12377588736.0
+SW.PA,Sodexo,Industrials,Specialty Business Services,France,EUR,8229059072.0
+FR.PA,Valeo,Consumer Cyclical,Auto Parts,France,EUR,3578354432.0
+GET.PA,Getlink,Industrials,Railroads,France,EUR,10008600576.0
+ELIS.PA,Elis,Industrials,Specialty Business Services,France,EUR,4869227520.0
+RXL.PA,Rexel,Technology,Electronics & Computer Distribution,France,EUR,10738649088.0
+SPIE.PA,SPIE,Industrials,Engineering & Construction,France,EUR,7540812288.0
+IPN.PA,Ipsen,Healthcare,Drug Manufacturers - Specialty & Generic,France,EUR,12969229312.0
