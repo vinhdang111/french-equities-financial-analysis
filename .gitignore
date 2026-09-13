@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.venv/
+
+# Data (uncomment if raw CSVs get large / you don't want to commit them)
+# data/raw/*.csv
+# data/processed/*.csv
+
+# Power BI (uncomment if the .pbix gets too large for GitHub)
+# powerbi/*.pbix
+
+# OS / editor junk
+.DS_Store
+.vscode/
