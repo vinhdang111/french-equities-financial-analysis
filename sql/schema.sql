@@ -1,9 +1,4 @@
--- schema.sql
--- Defines the CLEAN, normalized tables for the project database.
--- These are built FROM the raw staging tables (imported directly from CSV)
--- using load_and_clean.sql - this file only defines the target structure.
 
--- One row per company. Static info, doesn't change by year.
 CREATE TABLE IF NOT EXISTS companies (
     ticker        TEXT PRIMARY KEY,
     company_name  TEXT NOT NULL,
