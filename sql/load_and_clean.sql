@@ -1,25 +1,7 @@
 -- load_and_clean.sql
--- Populates the clean tables (defined in schema.sql) from the raw staging
--- tables you import directly from CSV via DB Browser's "Import Table from CSV".
---
--- BEFORE running this file:
--- 1. Run schema.sql first (creates the empty clean tables)
--- 2. Import the 4 CSVs via File > Import > Table from CSV, using these exact
---    staging table names:
---      companies.csv          -> companies            (already clean, load as-is)
---      income_statement.csv   -> income_statement_raw
---      balance_sheet.csv      -> balance_sheet_raw
---      cash_flow.csv          -> cash_flow_raw
---
--- Note: companies.csv doesn't need cleaning, so it's imported directly with its
--- final name "companies" - matching the table already created by schema.sql.
--- If DB Browser complains the table already exists, either drop the empty one
--- first (DROP TABLE companies;) then import, or import it as companies_import
--- and run: INSERT INTO companies SELECT * FROM companies_import;
 
--- ------------------------------------------------------------------
 -- INCOME STATEMENT: select core metrics, filter out empty artifact rows
--- ------------------------------------------------------------------
+
 INSERT INTO income_statement (
     ticker, fiscal_year_end, total_revenue, cost_of_revenue, gross_profit,
     operating_income, operating_expense, ebitda, ebit, pretax_income,
@@ -44,9 +26,9 @@ SELECT
 FROM income_statement_raw
 WHERE TotalRevenue IS NOT NULL;   -- drops the empty artifact year some companies have
 
--- ------------------------------------------------------------------
+
 -- BALANCE SHEET: select core metrics, filter out empty artifact rows
--- ------------------------------------------------------------------
+
 INSERT INTO balance_sheet (
     ticker, fiscal_year_end, total_assets, total_liabilities, stockholders_equity,
     common_stock_equity, retained_earnings, total_debt, net_debt,
@@ -73,9 +55,9 @@ SELECT
 FROM balance_sheet_raw
 WHERE TotalAssets IS NOT NULL;
 
--- ------------------------------------------------------------------
+
 -- CASH FLOW: select core metrics, filter out empty artifact rows
--- ------------------------------------------------------------------
+
 INSERT INTO cash_flow (
     ticker, fiscal_year_end, operating_cash_flow, investing_cash_flow,
     financing_cash_flow, free_cash_flow, capital_expenditure,
@@ -98,11 +80,3 @@ SELECT
 FROM cash_flow_raw
 WHERE OperatingCashFlow IS NOT NULL;
 
--- ------------------------------------------------------------------
--- Quick sanity checks - run these after loading to confirm it worked
--- ------------------------------------------------------------------
--- SELECT COUNT(*) FROM companies;
--- SELECT COUNT(*) FROM income_statement;
--- SELECT COUNT(*) FROM balance_sheet;
--- SELECT COUNT(*) FROM cash_flow;
--- SELECT * FROM income_statement LIMIT 5;
