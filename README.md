@@ -28,7 +28,7 @@ I'm building this project to combine my accounting/audit background with data an
 - [x] **Step 1 — Data Collection**: Pulled ~4 years of annual income statement, balance sheet, and cash flow data for ~50 CAC 40 / SBF 120 companies via the `yfinance` API. See [`scripts/01_fetch_data.py`](./scripts/01_fetch_data.py).
 - [x] **Step 2 — SQL Database**: Designed a normalized schema and loaded/cleaned the raw CSVs into SQLite entirely in SQL (no Python). See [`sql/schema.sql`](./sql/schema.sql) and [`sql/load_and_clean.sql`](./sql/load_and_clean.sql).
 - [x] **Step 3 — Financial Ratios & EDA**: Computed profitability, return, leverage, liquidity, and growth ratios for each company-year; explored cross-sector and cross-company patterns. See [`notebooks/02_financial_ratios_eda.ipynb`](./notebooks/02_financial_ratios_eda.ipynb).
-- [ ] **Step 4 — Forecasting**: Pooled/panel regression model (scikit-learn) predicting next-year revenue growth from current-year financial ratios across all companies.
+- [x] **Step 4 — Forecasting**: Pooled/panel regression (Ridge vs Random Forest, scikit-learn) predicting next-year revenue growth from current-year financial ratios across all companies, with company-grouped train/test split and cross-validation. See [`notebooks/03_forecasting_model.ipynb`](./notebooks/03_forecasting_model.ipynb).
 - [ ] **Step 5 — Power BI Dashboard**: Interactive dashboard with company comparison, trend, and model-insight views.
 
 ## Data Source & Design Decisions
@@ -56,6 +56,12 @@ The highest debt-to-equity ratios are concentrated in Financial Services (Crédi
 **Margin, returns, and growth relationships**
 Operating margin and ROA are meaningfully correlated (0.72), suggesting operating efficiency does translate into asset returns. ROE is only weakly correlated with net margin (0.04), suggesting ROE is driven more by financial leverage than by underlying profitability — a useful caveat when comparing ROE across sectors with very different capital structures.
 
+**Forecasting model (Step 4)**
+A pooled/panel regression (one row per company-year) was used to predict next-year revenue growth from current-year financial ratios, with a company-grouped train/test split to prevent leakage. Random Forest outperformed Ridge Regression on 5-fold cross-validated R² (mean 0.11 vs -0.06), and is used for forward-looking predictions. An R² around 0.10 means the model explains roughly 10% of the variance in next-year growth — useful as a screening/ranking signal, not a precise forecast, which is an honest and expected result given ~110 training rows and ratio-only features. Prior-year revenue growth (momentum), company size, and FCF margin were the strongest predictors in the Random Forest model; sector was the dominant factor in the Ridge model, with Financial Services and Consumer Cyclical associated with higher predicted growth.
+
+**Data-quality decisions in the model**
+Two explicit outlier-handling steps were applied and documented in the notebook: (1) excluding Vivendi's FY2022→FY2023 transition from training, since its ~-97% revenue change reflects a 2024 corporate demerger rather than organic performance; (2) winsorizing extreme ratio values (2nd-98th percentile) to prevent near-zero-equity distress cases (e.g. Atos, consistent with the ROE outlier flagged in Step 3) from dominating the regression.
+
 ## Dashboard Preview
 
 _Screenshot/GIF to be added once the Power BI dashboard is built._
@@ -72,7 +78,7 @@ This downloads raw annual financial data into `data/raw/`. Then, in DB Browser f
 2. Import the 4 raw CSVs as staging tables (see comments in `sql/load_and_clean.sql` for exact table names).
 3. Run `sql/load_and_clean.sql` to populate the clean tables.
 
-Finally, open and run `notebooks/02_financial_ratios_eda.ipynb` to compute ratios and reproduce the analysis.
+Finally, open and run `notebooks/02_financial_ratios_eda.ipynb` to compute ratios, then `notebooks/03_forecasting_model.ipynb` to train and evaluate the growth-prediction model (requires `scikit-learn`).
 
 ## Author
 
