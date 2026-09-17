@@ -4,11 +4,11 @@ End-to-end financial analytics project covering ~50 major French-listed companie
 
 ## Motivation
 
-I'm building this project to combine my accounting/audit background (Big 4 assurance, CMA) with data analytics skills (Python, SQL, Power BI) as I move toward a career in Financial Data Analysis / FP&A. The goal is to simulate a realistic FP&A workflow end-to-end, using real financial data rather than a toy dataset.
+I'm building this project to combine my accounting/audit background with data analytics skills as I move toward a career in Financial Data Analysis / FP&A. The goal is to simulate a realistic FP&A workflow end-to-end, using real financial data rather than a toy dataset.
 
 ## Tech Stack
 
-- **Python** (pandas, yfinance, scikit-learn) — data collection, cleaning, and modeling
+- **Python** (pandas, yfinance, scikit-learn, matplotlib, seaborn) — data collection, cleaning, ratio analysis, and modeling
 - **SQL** (SQLite) — schema design, data cleaning, and structured storage
 - **Jupyter Notebook** — exploratory analysis, financial ratios, forecasting
 - **Power BI** — interactive dashboard for cross-company comparison
@@ -27,7 +27,7 @@ I'm building this project to combine my accounting/audit background (Big 4 assur
 
 - [x] **Step 1 — Data Collection**: Pulled ~4 years of annual income statement, balance sheet, and cash flow data for ~50 CAC 40 / SBF 120 companies via the `yfinance` API. See [`scripts/01_fetch_data.py`](./scripts/01_fetch_data.py).
 - [x] **Step 2 — SQL Database**: Designed a normalized schema and loaded/cleaned the raw CSVs into SQLite entirely in SQL (no Python). See [`sql/schema.sql`](./sql/schema.sql) and [`sql/load_and_clean.sql`](./sql/load_and_clean.sql).
-- [ ] **Step 3 — Data Cleaning & EDA**: Compute financial ratios (margins, ROE, ROA, etc.), explore cross-company trends.
+- [x] **Step 3 — Financial Ratios & EDA**: Computed profitability, return, leverage, liquidity, and growth ratios for each company-year; explored cross-sector and cross-company patterns. See [`notebooks/02_financial_ratios_eda.ipynb`](./notebooks/02_financial_ratios_eda.ipynb).
 - [ ] **Step 4 — Forecasting**: Pooled/panel regression model (scikit-learn) predicting next-year revenue growth from current-year financial ratios across all companies.
 - [ ] **Step 5 — Power BI Dashboard**: Interactive dashboard with company comparison, trend, and model-insight views.
 
@@ -35,13 +35,26 @@ I'm building this project to combine my accounting/audit background (Big 4 assur
 
 - Financial data pulled from Yahoo Finance via the `yfinance` Python library.
 - **Annual data only.** Quarterly data was initially considered to get more data points per company, but testing showed most French/EU-listed companies return 0 quarters of usable data via `yfinance`. This is because the EU Transparency Directive (amended in 2013) removed the mandatory quarterly reporting requirement that still applies to US-listed companies — most EU issuers now only publish annual and semi-annual reports. This is a real market/regulatory constraint, not a data-collection bug.
-- **Forecasting approach**: because each company only has ~4 years of annual history — too few observations for a per-company time-series train/test split — the project uses a **pooled/panel regression** instead: one row per company-year (~150 rows across all companies), predicting next-year revenue growth from current-year financial ratios (margin, leverage, size, sector, etc.). This trades time-series depth for cross-sectional breadth, which is both more statistically sound given the data available and arguably more relevant to FP&A/investment-analysis use cases than forecasting a single company's revenue from 4 data points.
-- **SQL schema design**: the raw `yfinance` output is very wide and sparse (income statement ~80 columns, balance sheet ~130, cash flow ~100), since it includes every possible US-GAAP line item even though French companies only report a subset. Rather than mirroring that structure, the SQL schema keeps only 10-15 core financial metrics per statement type — the ones actually needed for ratio analysis and modeling. Raw CSVs are first loaded into staging tables, then transformed into clean, normalized tables (`companies`, `income_statement`, `balance_sheet`, `cash_flow`) via `CREATE TABLE` + `INSERT INTO ... SELECT`, which also filters out empty artifact rows.
-- Companies have different fiscal year-end dates, so calendar years shown may not align 1:1 across all companies.
+- **Forecasting approach**: because each company only has ~4 years of annual history — too few observations for a per-company time-series train/test split — the project uses a **pooled/panel regression** instead: one row per company-year (~150+ rows across all companies), predicting next-year revenue growth from current-year financial ratios (margin, leverage, size, sector, etc.).
+- **SQL schema design**: the raw `yfinance` output is very wide and sparse (income statement ~80 columns, balance sheet ~130, cash flow ~100), since it includes every possible US-GAAP line item even though French companies only report a subset. The SQL schema keeps only 10-15 core financial metrics per statement type. Raw CSVs are loaded into staging tables, then transformed into clean, normalized tables via `CREATE TABLE` + `INSERT INTO ... SELECT`, which also filters out empty artifact rows.
+- Companies have different fiscal year-end dates, so calendar years shown may not align 1:1 across all companies; ratios and growth figures are computed per company based on its own reporting calendar, not a shared calendar year.
 
 ## Key Findings
 
-_To be added once analysis is complete._
+**Profitability by sector**
+Financial Services shows the highest median net margin (~17.6%), followed by Consumer Defensive (~10.3%) and Healthcare (~9.7%). Consumer Cyclical is lowest (~1.0%), reflecting thin retail/auto margins versus banking/insurance economics.
+
+**Standout ROE values**
+Atos shows an extreme ROE (~178%), almost certainly caused by stockholders' equity being close to zero (consistent with the company's real-world financial distress), which mathematically inflates the ratio rather than reflecting genuinely strong performance — a reminder that ROE should always be read alongside the equity base. Excluding that outlier, top ROE performers are led by Safran, Bureau Veritas, and Hermès.
+
+**Revenue growth**
+36% of companies (18 of 50) show negative YoY revenue growth in their most recent fiscal year, concentrated in Technology (Atos, STMicroelectronics), Consumer Cyclical (Kering, LVMH, Stellantis), and Energy (TotalEnergies) — consistent with broader 2025-2026 headwinds in luxury demand and energy prices. Healthcare and Industrials show the strongest median growth.
+
+**Leverage**
+The highest debt-to-equity ratios are concentrated in Financial Services (Crédit Agricole, BNP Paribas, Société Générale, 2.4x-4.0x) — expected, since leverage is core to the banking business model. On Net Debt/EBITDA, Vivendi and Getlink stand out with very high ratios (~6.7x-6.9x), well above the ~3x level generally considered a comfort threshold.
+
+**Margin, returns, and growth relationships**
+Operating margin and ROA are meaningfully correlated (0.72), suggesting operating efficiency does translate into asset returns. ROE is only weakly correlated with net margin (0.04), suggesting ROE is driven more by financial leverage than by underlying profitability — a useful caveat when comparing ROE across sectors with very different capital structures.
 
 ## Dashboard Preview
 
@@ -50,7 +63,7 @@ _Screenshot/GIF to be added once the Power BI dashboard is built._
 ## How to Reproduce
 
 ```bash
-pip install yfinance pandas
+pip install yfinance pandas numpy matplotlib seaborn jupyter
 python scripts/01_fetch_data.py
 ```
 
@@ -58,6 +71,8 @@ This downloads raw annual financial data into `data/raw/`. Then, in DB Browser f
 1. Run `sql/schema.sql` to create the clean tables.
 2. Import the 4 raw CSVs as staging tables (see comments in `sql/load_and_clean.sql` for exact table names).
 3. Run `sql/load_and_clean.sql` to populate the clean tables.
+
+Finally, open and run `notebooks/02_financial_ratios_eda.ipynb` to compute ratios and reproduce the analysis.
 
 ## Author
 
