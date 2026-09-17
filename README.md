@@ -4,7 +4,7 @@ End-to-end financial analytics project covering ~50 major French-listed companie
 
 ## Motivation
 
-I'm building this project to combine my accounting/audit background with data analytics skills as I move toward a career in Financial Data Analysis / FP&A. The goal is to simulate a realistic FP&A workflow end-to-end, using real financial data rather than a toy dataset.
+I'm building this project to combine my accounting/audit background with data analytics skills, exploring how the two fit together in practice. The goal is to simulate a realistic FP&A workflow end-to-end, using real financial data rather than a toy dataset.
 
 ## Tech Stack
 
