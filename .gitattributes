@@ -2,5 +2,4 @@ sql/** linguist-detectable=true
 sql/** linguist-language=SQL
 *.sql linguist-detectable=true
 *.sql linguist-language=SQL
-*.ipynb linguist-detectable=false
-*.ipynb linguist-vendored
+
