@@ -27,7 +27,7 @@ I'm building this project to combine my accounting/audit background with data an
 
 - [x] **Step 1 — Data Collection**: Pulled ~4 years of annual income statement, balance sheet, and cash flow data for ~50 CAC 40 / SBF 120 companies via the `yfinance` API. See [`scripts/01_fetch_data.py`](./scripts/01_fetch_data.py).
 - [x] **Step 2 — SQL Database**: Designed a normalized schema and loaded/cleaned the raw CSVs into SQLite entirely in SQL (no Python). See [`sql/schema.sql`](./sql/schema.sql) and [`sql/load_and_clean.sql`](./sql/load_and_clean.sql).
-- [x] **Step 3 — Financial Ratios & EDA**: Computed profitability, return, leverage, liquidity, and growth ratios for each company-year; explored cross-sector and cross-company patterns. See [`notebooks/02_financial_ratios_eda.ipynb`](./notebooks/02_financial_ratios_eda.ipynb).
+- [x] **Step 3 — Financial Ratios & EDA**: Computed profitability, return, leverage, liquidity, and growth ratios for each company-year; explored cross-sector and cross-company patterns. See [`notebooks/02_financial_ratios_eda.ipynb`](./notebooks/eda/02_financial_ratios_eda.ipynb).
 - [x] **Step 4 — Forecasting**: Pooled/panel regression (Ridge vs Random Forest, scikit-learn) predicting next-year revenue growth from current-year financial ratios across all companies, with company-grouped train/test split and cross-validation. See [`notebooks/03_forecasting_model.ipynb`](./notebooks/03_forecasting_model.ipynb).
 - [ ] **Step 5 — Power BI Dashboard**: Interactive dashboard with company comparison, trend, and model-insight views.
 
