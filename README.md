@@ -79,7 +79,7 @@ Styled with a French flag color palette (blue/white/red) and a fixed left sideba
 ![Overview page](./powerbi/overview.png)
 
 **Trend**
-![Trend page](./powerbi/trend.png)
+
 
 **Forecast**
 ![Forecast page](./powerbi/forecast.png)
