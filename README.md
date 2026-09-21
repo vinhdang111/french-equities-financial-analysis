@@ -1,10 +1,10 @@
-# French Equities FP&A Analysis
+# French Equities Financial Data Analytics Project
 
 End-to-end financial analytics project covering ~50 major French-listed companies (CAC 40 / SBF 120). Built to practice the full FP&A / Financial Data Analyst workflow: data collection → SQL storage → Python analysis & forecasting → Power BI dashboard.
 
 ## Motivation
 
-I'm building this project to combine my accounting/audit background with data analytics skills, exploring how the two fit together in practice. The goal is to simulate a realistic FP&A workflow end-to-end, using real financial data rather than a toy dataset.
+I'm building this project to combine my accounting/audit background with data analytics skills, exploring how the two fit together in practice. The goal is to simulate a realistic Financial Analysis workflow end-to-end, using real financial data rather than a toy dataset.
 
 ## Tech Stack
 
@@ -76,13 +76,13 @@ Styled with a French flag color palette (blue/white/red) and a fixed left sideba
 ## Dashboard Preview
 
 **Overview**
-![Overview page](./powerbi/overview.png)
+![Overview page](./powerbi/screenshots/overview.png)
 
 **Trend**
-![Trend page](./powerbi/trend1.png)
+![Trend page](./powerbi/screenshots/trend.png)
 
 **Forecast**
-![Forecast page](./powerbi/forecast.png)
+![Forecast page](./powerbi/screenshots/forecast.png)
 
 ## How to Reproduce
 
