@@ -1,6 +1,6 @@
 # French Equities Financial Data Analytics Project
 
-End-to-end financial analytics project covering ~50 major French-listed companies (CAC 40 / SBF 120). Built to practice the full FP&A / Financial Data Analyst workflow: data collection → SQL storage → Python analysis & forecasting → Power BI dashboard.
+End-to-end financial analytics project covering ~50 major French-listed companies (CAC 40 / SBF 120). Built to practice the full Financial Data Analyst workflow: data collection → SQL storage → Python analysis & forecasting → Power BI dashboard.
 
 ## Motivation
 
