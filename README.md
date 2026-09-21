@@ -76,13 +76,13 @@ Styled with a French flag color palette (blue/white/red) and a fixed left sideba
 ## Dashboard Preview
 
 **Overview**
-![Overview page](./powerbi/screenshots/overview.png)
+![Overview page](./powerbi/overview.png)
 
 **Trend**
-![Trend page](./powerbi/screenshots/trend.png)
+![Trend page](./powerbi/trend1.png)
 
 **Forecast**
-![Forecast page](./powerbi/screenshots/forecast.png)
+![Forecast page](./powerbi/forecast.png)
 
 ## How to Reproduce
 
