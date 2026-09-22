@@ -64,7 +64,8 @@ A pooled/panel regression (one row per company-year) was used to predict next-ye
 Two explicit outlier-handling steps were applied and documented in the notebook: (1) excluding Vivendi's FY2022→FY2023 transition from training, since its ~-97% revenue change reflects a 2024 corporate demerger rather than organic performance; (2) winsorizing extreme ratio values (2nd-98th percentile) to prevent near-zero-equity distress cases (e.g. Atos, consistent with the ROE outlier flagged in Step 3) from dominating the regression. The same two companies (Atos, Vivendi) also had to be filtered out of the Power BI Trend page specifically, since their extreme values distorted the Y-axis scale for every other company on the same chart.
 
 ## Dashboard
-[![French Equities Dashboard](https://via.placeholder.com/800x450.png?text=Click+to+View+Power+BI+Dashboard)](https://app.powerbi.com/view?r=eyJrIjoiYjBmYTQzODQtODNjZC00YWVjLWFkN2YtM2IwY2YwMGZjMDVlIiwidCI6Ijk2OTJhM2QzLTJhMDgtNGVjOC1hMGJkLTFkYjM1NWViNDIzMCIsImMiOjh9&pageName=2e63ed60169b41785e60)
+[![Power BI](https://img.shields.io/badge/Power_BI-Live_Dashboard-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://app.powerbi.com/view?r=eyJrIjoiYjBmYTQzODQtODNjZC00YWVjLWFkN2YtM2IwY2YwMGZjMDVlIiwidCI6Ijk2OTJhM2QzLTJhMDgtNGVjOC1hMGJkLTFkYjM1NWViNDIzMCIsImMiOjh9&pageName=2e63ed60169b41785e60)
+
 The Power BI dashboard has 3 pages:
 
 - **Overview** — 5 KPI cards (company count, market cap, net margin, ROE, debt/equity), a treemap of market cap by sector, a Top 15 companies bar chart by market cap, and a donut chart of company count by sector.
