@@ -104,4 +104,5 @@ Finally, open `powerbi/french_equities_dashboard.pbix` in Power BI Desktop (tabl
 ## Author
 
 Thanh Vinh Dang — [LinkedIn](https://www.linkedin.com/in/thanhvinhdang2001)
-🌐 **LINK PORTFOLIO:** [https://vinhdang111.github.io/](https://vinhdang111.github.io/)
+
+**PORTFOLIO:** [https://vinhdang111.github.io/](https://vinhdang111.github.io/)
