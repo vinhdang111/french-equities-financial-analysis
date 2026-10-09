@@ -2,6 +2,8 @@
 
 End-to-end financial analytics project covering ~50 major French-listed companies (CAC 40 / SBF 120). Built to practice the full Financial Data Analyst workflow: data collection → SQL storage → Python analysis & forecasting → Power BI dashboard.
 
+**View online (no download needed):** [📊 Live Power BI dashboard](https://app.powerbi.com/view?r=eyJrIjoiYjBmYTQzODQtODNjZC00YWVjLWFkN2YtM2IwY2YwMGZjMDVlIiwidCI6Ijk2OTJhM2QzLTJhMDgtNGVjOC1hMGJkLTFkYjM1NWViNDIzMCIsImMiOjh9&pageName=2e63ed60169b41785e60)
+
 ## Motivation
 
 I'm building this project to combine my accounting/audit background with data analytics skills, exploring how the two fit together in practice. The goal is to simulate a realistic Financial Analysis workflow end-to-end, using real financial data rather than a toy dataset.
