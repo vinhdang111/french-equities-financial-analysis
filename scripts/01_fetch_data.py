@@ -14,8 +14,6 @@ Notes:
 - A few tickers may fail because the company was recently merged, renamed, or
   delisted (e.g. Suez, Vivendi's 2024 split) -> the script logs these and continues
   instead of stopping.
-- Run this in a Jupyter Notebook or a terminal with internet access. It will NOT
-  work in a sandboxed environment without access to Yahoo Finance.
 """
 
 import time
